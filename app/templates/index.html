@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        
+        .drop-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            width: 300px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        #upload-btn {
+            margin-top: 10px;
+        }
+        
+        
+        #user-profile {
+            margin-top: 20px;
+        }
+
+        
+        #screenshot-upload {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+   
+    
+
+    
+    <div id="screenshot-upload">
+        <h3>Upload Screenshot</h3>
+        
+        
+        <a href="{% url 'app_detail' pk=app.pk %}" class="btn">
+            <img src="{% static 'app/app-icon.png' %}" alt="App Icon" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+            
+        </a>
+
+        
+        <div id="drop-area" class="drop-area">
+            <p>Drag and drop your screenshot here</p><br><br>
+            <input type="file" id="file-input" /><br><br>
+        </div>
+        
+        <button id="upload-btn">Upload</button>
+    </div>
+
+    <script src="{% static 'app/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app.name }} Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        header .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        header .btn:hover {
+            background-color: #45a049;
+        }
+
+        .app-detail {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .delete-btn:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ app.name }} Details</h1>
+        <a href="/android/" class="btn">Back to List</a>
+    </header>
+    <div class="app-detail">
+        <h2>{{ app.name }}</h2>
+        <p><strong>Description:</strong> {{ app.description }}</p>
+        <p><strong>Points:</strong> {{ app.points }}</p>
+        <a href="{% url 'android-apps' pk=app.pk %}" class="btn">Edit</a>
+        <form method="POST" action="{% url 'android-apps' pk=app.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn delete-btn">Delete</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to store token in session storage
+        function storeToken(token) {
+            sessionStorage.setItem('accessToken', token);
+        }
+
+        // Function to retrieve token from session storage
+        function getToken() {
+            return sessionStorage.getItem('accessToken');
+        }
+
+        // Example usage of token storage
+        const loginData = {
+            username: 'shobha',
+            password: 'Shobha123'
+        };
+
+        fetch('api/token/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.access) {
+                storeToken(data.access);
+                console.log('Token stored:', getToken());
+            } else {
+                console.error('Login failed:', data.detail);
+            }
+        });
+
+        // Use the token for authenticated API requests
+        fetch('/api/some-protected-route/', {
+            headers: {
+                'Authorization': `Bearer ${getToken()}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Protected data:', data);
+        });
+    </script>
+</body>
+</html>

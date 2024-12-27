@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Light grey background for the entire page */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full-screen height to center content */
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+}
+
+.form-container {
+    background-color: #fff; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for 3D effect */
+    padding: 20px 30px; /* Padding inside the form */
+    width: 350px; /* Fixed width for the form */
+}
+
+.form-container h2 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #333; /* Dark grey text for the heading */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form fields */
+}
+
+.form-group label {
+    display: block; /* Make label take up a full line */
+    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; /* Make label text bold */
+    color: #555; /* Dark grey text for the labels */
+}
+
+.form-group input {
+    width: 100%; /* Full width input fields */
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #ddd; /* Light grey border for input fields */
+    border-radius: 5px; /* Rounded corners for input fields */
+    font-size: 14px; /* Smaller text inside input fields */
+}
+
+.btn {
+    display: block; /* Make the button block-level */
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding inside the button */
+    background-color: #4CAF50; /* Green background for the button */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for the button */
+    font-size: 16px; /* Larger font size for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.btn:hover {
+    background-color: #45a049; /* Darker green when hovering */
+}
